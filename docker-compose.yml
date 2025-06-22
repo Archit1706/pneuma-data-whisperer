@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+    pneuma-api:
+        build:
+            context: .
+            dockerfile: Dockerfile.api
+        ports:
+            - "8000:8000"
+        environment:
+            - REDIS_HOST=redis
+            - PNEUMA_STORAGE_PATH=/app/storage
+        volumes:
+            - ./storage:/app/storage
+            - ./logs:/app/logs
+        depends_on:
+            - redis
+        restart: unless-stopped
+
+    redis:
+        image: redis:7-alpine
+        ports:
+            - "6379:6379"
+        volumes:
+            - redis_data:/data
+        restart: unless-stopped
+
+    # Optional: Include OpenWebUI in the stack
+    openwebui:
+        image: ghcr.io/open-webui/open-webui:main
+        ports:
+            - "8080:8080"
+        environment:
+            - OLLAMA_BASE_URL=http://host.docker.internal:11434
+            - WEBUI_SECRET_KEY=your-secret-key-here
+        volumes:
+            - openwebui_data:/app/backend/data
+        restart: unless-stopped
+
+volumes:
+    redis_data:
+    openwebui_data:
