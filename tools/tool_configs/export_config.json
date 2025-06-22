@@ -1,0 +1,32 @@
+{
+    "type": "function",
+    "function": {
+        "name": "export_table_metadata",
+        "description": "Export metadata and information for one or more tables in various formats.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "table_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of table identifiers to export"
+                },
+                "format": {
+                    "type": "string",
+                    "enum": [
+                        "json",
+                        "csv",
+                        "markdown"
+                    ],
+                    "description": "Export format",
+                    "default": "json"
+                }
+            },
+            "required": [
+                "table_ids"
+            ]
+        }
+    }
+}

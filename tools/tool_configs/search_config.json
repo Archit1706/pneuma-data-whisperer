@@ -1,0 +1,31 @@
+{
+    "type": "function",
+    "function": {
+        "name": "search_tables",
+        "description": "Search for relevant datasets and tables using natural language queries. This is the primary tool for data discovery.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "Natural language description of the data you're looking for. Examples: 'find traffic accident data', 'show me weather datasets', 'crime data with location information'"
+                },
+                "k": {
+                    "type": "integer",
+                    "description": "Number of tables to return (1-20)",
+                    "default": 5,
+                    "minimum": 1,
+                    "maximum": 20
+                },
+                "session_id": {
+                    "type": "string",
+                    "description": "Optional session ID to maintain conversation context",
+                    "default": null
+                }
+            },
+            "required": [
+                "query"
+            ]
+        }
+    }
+}
