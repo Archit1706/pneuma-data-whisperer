@@ -1,0 +1,25 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+python-multipart==0.0.6
+python-jose[cryptography]==3.3.0
+requests==2.31.0
+redis==5.0.1
+aioredis==2.0.1
+prometheus-client==0.19.0
+structlog==23.2.0
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2
+
+# For Pneuma integration (adjust based on actual requirements)
+torch>=2.0.0
+transformers>=4.30.0
+sentence-transformers>=2.2.0
+
+# Development dependencies
+black==23.12.0
+isort==5.13.2
+flake8==6.1.0
+mypy==1.7.1
