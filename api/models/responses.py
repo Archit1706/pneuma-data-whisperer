@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 
@@ -10,7 +10,7 @@ class TableInfo(BaseModel):
     relevance_score: Optional[float] = None
     row_count: Optional[int] = None
     column_count: Optional[int] = None
-    schema: Optional[List[Dict[str, Any]]] = None
+    table_schema: Optional[List[Dict[str, Any]]] = Field(None, alias="schema")
     sample_data: Optional[List[Dict[str, Any]]] = None
     metadata: Optional[Dict[str, Any]] = None
 

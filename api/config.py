@@ -26,6 +26,11 @@ class Settings(BaseSettings):
     session_expire_hours: int = 24
     secret_key: str = "change-this-in-production"
 
+    # OpenWebUI Configuration (optional fields)
+    openwebui_host: str = "localhost"
+    openwebui_port: int = 8080
+    ollama_base_url: str = "http://localhost:11434"
+
     # Monitoring
     enable_metrics: bool = True
     metrics_port: int = 9090
@@ -33,6 +38,8 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = False
+        # Allow extra fields that might be in .env
+        extra = "ignore"
 
 
 settings = Settings()
